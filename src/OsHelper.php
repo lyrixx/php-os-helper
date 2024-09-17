@@ -15,7 +15,7 @@ class OsHelper
 
     public static function isWindowsSubsystemForLinux(): bool
     {
-        return self::isUnix() && str_contains(strtolower(php_uname()), 'microsoft');
+        return !self::isDocker() && self::isUnix() && str_contains(strtolower(php_uname()), 'microsoft');
     }
 
     public static function isWindows(): bool
@@ -48,6 +48,11 @@ class OsHelper
         }
 
         return str_contains(self::$kernelName, 'Darwin');
+    }
+
+    public static function isDocker(): bool
+    {
+        return file_exists('/.dockerenv') || (file_exists('/proc/self/cgroup') && false !== mb_strpos(file_get_contents('/proc/self/cgroup') ?: '', 'docker'));
     }
 
     public static function getMacOSVersion(): string
