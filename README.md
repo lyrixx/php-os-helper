@@ -21,6 +21,7 @@ OsHelper::isWindowsSeven(); // true or false
 OsHelper::isWindowsEightOrHigher(); // true or false
 OsHelper::isWindowsSubsystemForLinux(); // true or false
 OsHelper::isMacOs(); // true or false
+OsHelper::isDocker(); // true or false
 OsHelper::getMacOSVersion(); // 10.15.7
 ```
 

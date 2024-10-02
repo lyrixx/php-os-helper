@@ -65,6 +65,13 @@ class OsHelperTest extends TestCase
         $this->assertSame($isDarwin, OsHelper::isMacOS());
     }
 
+    public function testIsDocker()
+    {
+        $isDocker = file_exists('/.dockerenv') || (file_exists('/proc/self/cgroup') && false !== mb_strpos(file_get_contents('/proc/self/cgroup') ?: '', 'docker'));
+
+        $this->assertSame($isDocker, OsHelper::isDocker());
+    }
+
     public function testGetMacOSVersion()
     {
         if (!OsHelper::isMacOS()) {
