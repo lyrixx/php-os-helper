@@ -2,6 +2,8 @@
 
 ## Not released yet
 
+## 0.2.0 (2024-10-02)
+
 * Remove mb_string extension requirement
 * Add Docker support
 
